@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --darkgreen: #264653;
+    --lightgreen: #2A9D8F;
+    --yellow: #E9C46A;
+    --orange: #F4A261;
+    --darkorange: #E76F51;
+    --white: #fdfaf3;
+    --darkgreen-dark: #1a2f38;
+    --lightgreen-dark: #227e73;
+    --yellow-dark: #e4b648;
+    --orange-dark: #f18c3c;
+    --darkorange-dark: #e2522f;
+    --white-dark: #f8edd1;
+}
 
 /*=============================================
 =            CSS reset            =
@@ -12,6 +27,9 @@
 
 * {
     margin: 0;
+    text-align: center;
+    color: var(--white);
+
 }
 
 html,
@@ -19,22 +37,34 @@ body {
     height: 100%;
 }
 
-
-
-img,
-picture,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
+html {
+    font-size: 30px;
 }
 
 input,
-button,
 textarea,
-select {
-    font: inherit;
+button {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    outline: none;
+    appearance: none;
+    text-align: left;
+}
+
+input:hover,
+input:active,
+input:focus,
+textarea:hover,
+textarea:active,
+textarea:focus,
+button:hover,
+button:active,
+button:focus {
+    outline: none;
 }
 
 p,
@@ -60,23 +90,24 @@ h6 {
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Cutive Mono', monospace;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background-color: #A9C9FF;
+    background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+
 }
 
 /* Grid */
-.container {
+.calculator {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: 1.5fr, repeat(5, 1fr);
     grid-auto-flow: row;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
+
+
     grid-template-areas:
         "input-box input-box input-box input-box"
         "sum substract multiply divide"
@@ -84,10 +115,55 @@ body {
         "four five six equals"
         "one two three equals"
         "zero period clear equals";
+    box-shadow: 0.3px 0.5px 0.6px hsl(317deg 45% 63% / 0.33),
+        1px 2.1px 2.4px -0.5px hsl(317deg 45% 63% / 0.31),
+        2px 4.1px 4.8px -1px hsl(317deg 45% 63% / 0.29),
+        3.7px 7.4px 8.6px -1.5px hsl(317deg 45% 63% / 0.28),
+        6.6px 13.1px 15.3px -2px hsl(317deg 45% 63% / 0.26),
+        11.1px 22.2px 25.9px -2.5px hsl(317deg 45% 63% / 0.24),
+        17.8px 35.5px 41.4px -3px hsl(317deg 45% 63% / 0.23);
+    ;
+
+}
+
+.btn {
+    background-color: var(--yellow);
+    border: 1px solid var(--yellow-dark);
+    cursor: pointer;
+}
+
+.btn:focus {
+    background-color: var(--yellow-dark);
+    border: 1px solid var(--yellow);
 }
 
 .input-box {
     grid-area: input-box;
+    background-color: var(--darkgreen);
+    border: 1px solid var(--darkgreen-dark);
+    font-size: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    text-align: right;
+}
+
+.btn-operator {
+    background-color: var(--lightgreen);
+    border: 1px solid var(--lightgreen-dark);
+}
+
+.btn-operator:focus {
+    background-color: var(--lightgreen-dark);
+    border: 1px solid var(--lightgreen);
+}
+
+.equals {
+    background-color: var(--darkorange);
+    border: 1px solid var(--darkorange-dark);
+}
+
+.equals:focus {
+    background-color: var(--darkorange-dark);
+    border: 1px solid var(--darkorange);
 }
 
 .sum {
@@ -158,5 +234,9 @@ body {
     grid-area: clear;
 }
 
+.btn {
+    padding: 0.5em 1.25em;
+
+}
 
 /*=====  End of Styling  ======*/
