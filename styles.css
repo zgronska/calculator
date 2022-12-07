@@ -91,7 +91,7 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-family: 'PT Sans', sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: grid;
     place-items: center;
@@ -102,14 +102,14 @@ body {
 
 /* Grid */
 .calculator {
+    max-width: 15rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1.5fr, repeat(5, 1fr);
     grid-auto-flow: row;
 
-
     grid-template-areas:
-        "input-box input-box input-box input-box"
+        "display display display display"
         "sum substract multiply divide"
         "seven eight nine equals"
         "four five six equals"
@@ -130,6 +130,7 @@ body {
     background-color: var(--yellow);
     border: 1px solid var(--yellow-dark);
     cursor: pointer;
+    text-align: center;
 }
 
 .btn:focus {
@@ -137,13 +138,21 @@ body {
     border: 1px solid var(--yellow);
 }
 
-.input-box {
-    grid-area: input-box;
+.display {
+    grid-area: display;
     background-color: var(--darkgreen);
     border: 1px solid var(--darkgreen-dark);
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     padding: 0.5rem 0.75rem;
     text-align: right;
+    min-height: 3.75rem;
+    overflow: hidden;
+}
+
+.current-operand {
+    font-size: 1.5rem;
 }
 
 .btn-operator {
